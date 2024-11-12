@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hola</title>
+    <title>Inicio {% block title %}{% endblock %} </title>
 
     {% load static %}
 
@@ -13,14 +13,24 @@
 
 <body>
 
-    <header>
+    <header id="header">
 
-        <nav>
-            <img src="{% static 'home/img/logo.png' %}" alt="Logo web" class="logo-header">
-            <ul>
+        <nav id="menu-navegacion-principal">
+            <a href="{% url 'home' %}"><img src="{% static 'home/img/logo.png' %}" alt="Logo web"
+                    class="logo-header"></a>
+            <ul class="menu menu-secciones">
                 <li><a href="">Home</a></li>
                 <li><a href="">About</a></li>
                 <li><a href="">Contact</a></li>
+            </ul>
+
+            <ul class="menu menu-gestion-usuario">
+                <li><a href="">Login</a></li>
+                <li><a href="">Register</a></li>
+
+                {% if user.is_authenticated %}
+                <li><a href="">Logout</a></li>
+                {% endif %}
             </ul>
         </nav>
 
@@ -31,7 +41,9 @@
         {% endblock %}
     </main>
 
-    <footer>
+    <footer id="footer">
+
+        <p>© 2024 - julio acuña - Todos los derechos reservados</p>
 
     </footer>
 
